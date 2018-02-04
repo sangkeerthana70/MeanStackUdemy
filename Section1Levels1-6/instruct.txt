@@ -1,0 +1,91 @@
+1-node --version
+(installs node v4.1.2)
+(it installed v6.11.2)
+2- with node we also get a package manager called npm.
+3- to ensure this type npm --version.(3.10.10).
+4- to type in commands we need a node shell. So to initiate the shell
+type node
+5-require and module.exports(require is part of node and it will load other
+scripts)
+syntax- require('./Name of the file'); to specify the path and no .js extentsion is needed.
+
+6-how to expose a method and call it in the require module. Create a new 
+folder called talk.
+To do this create a file called goodbye.js under the talk folder
+and have a console.log inside the module.exports function and call then
+call it inside the app.js file.
+var goodbye = require('./talk/goodbye');
+7- another way of exposing the method in app.js.
+8-Asynchronous non-blocking code in node.js
+
+Section-1 Lecture-6 npm for Dependency management
+1-Install npm init in the root folder of MeanStackUdemy. This will 
+prompt you to create a package.json file. We  can also manage depen
+dencies inside this file.
+2- npm install express --save (to install the express package)
+This will create a folder called node_modules. To have a reference
+to this express in our package.json we type the --save at the end.
+3- npm install mocha --save-dev. this installs the test framework 
+for node.This creates a dev dependencies under the package.json file.
+4- it is a good practice not to include the node_modules while pushing
+to git hub.
+Level-6
+5-For this delete the node_modules and install npm install again.
+Installed npm install again in the main folder while doing Level6 
+in Section1 branch.
+Notice that express and mocha have been installed again.
+And also the dependencies and devdependencies are installed
+under the node_modules folder.
+6-how to install just the dependencies for our production environment when 
+we are in production server?
+6a-When our Node has the environment variable set to node_m set to 
+production, node will install the dependencies set in the production.
+6b-we can also force this by adding a flag of --production.
+So to implement this delete the node_modules folder again to make
+it empty.
+Now lets try installing just the production dependencies.
+type in npm install --production. This installs just the express
+modules. If we want more modules we have to type npm install without
+the --flag.Notice that npm install again installs mocha module too.
+It is always better to let the npm manage the package.jason file when
+moving between environments. The reason being it will download the
+latest patch version that is up to date and that is another reason
+we dont include node_modules in the git hub repos.
+6c-To ignore node_modules from sent to repos, create a .gitignore file.
+6d-How to use  npm to run scripts inside package.jason file. 
+add "start": "node app.js" inside the scripts object of package.jason
+6e- to make sure our command works type node app.js
+after creating an app1.js with a simple console.log in it.
+Or type npm start to start the server.
+
+Lecture7-Setting up Express to listen to requests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
