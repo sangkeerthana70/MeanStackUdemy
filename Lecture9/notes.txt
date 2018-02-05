@@ -1,0 +1,7 @@
+Lecture-9
+The index.html is served even it the index.html is omitted in the url path because
+of the static set up pointing to the public folder in the middleware app.use.
+
+Instead of serving the index.html from the static folder from the app.use 
+middleware we are going to give a subset of routes as url in the '/public' routes.
+like localhost:8080/public/index.html.
