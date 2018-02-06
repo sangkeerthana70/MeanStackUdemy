@@ -8,7 +8,8 @@ module.exports.hotelsGetAll = function(req, res) {
 };
 
 module.exports.hotelsGetOne = function(req, res) {
-    var hotelId = req.params.hotelId;
+    var hotelId = req.params.hotelId;//req.params is an object and the url parameter name can be accessed inside it
+    //by giving it a name hotelId that we give. We r using the URL parameter as the location INDEX.
     var thisHotel = hotelData[hotelId];
     console.log("Get hotelID", hotelId);
         res

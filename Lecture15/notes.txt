@@ -12,5 +12,9 @@ npm install --save body-parser.
 require it in app.js.
 The order in which it is put is important so it has to inbetween the static path and where
 we define the routes. This is to make sure the middleware runs before any API's run.
+See how to add a new item or hotel name using the POST method and test it in the POSTMAN
+app.
+
+Lecture-15
 
 

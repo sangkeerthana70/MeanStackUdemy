@@ -8,7 +8,8 @@ module.exports.hotelsGetAll = function(req, res) {
     var count = 5;
     
     if(req.query && req.query.offset){
-        offset = parseInt(req.query.offset, 10);
+        offset = parseInt(req.query.offset, 10);//to parse the returned string
+        //into a number.
     }
     
     if(req.query && req.query.count){
@@ -34,7 +35,7 @@ module.exports.hotelsGetOne = function(req, res) {
 
 module.exports.hotelsAddOne = function(req, res){
     console.log("POST new hotel");
-    console.log(req.body);
+    console.log(req.body);//the body-parser middleware will parse out all the data from the posted form to the req.body.
     res
             .status(200)
             .json(req.body);
