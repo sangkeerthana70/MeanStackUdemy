@@ -2,7 +2,7 @@ var express = require('express');//require express
 var app = express();//initialize express.
 var path = require('path');
 
-var routes = require('./routes');//get the routes from the routes folder under Lecture11.
+var routes = require('./api/routes');//get the routes from the /api/routes folder under Lecture12
 
 app.set('port', process.env.PORT); //sets port property for entire app
 
