@@ -42,6 +42,8 @@ Lecture-13
 URL parameters.
 Defining dynamic routes with URL parameters.
 Using them in controllers.
+Note that the URL parameters are available inside the controller. They are available 
+inside the request object.
 
 
 
