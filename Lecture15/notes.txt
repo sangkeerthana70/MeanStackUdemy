@@ -16,5 +16,12 @@ See how to add a new item or hotel name using the POST method and test it in the
 app.
 
 Lecture-15
+How nodemon is used to restart the application automatically.
+This nodemon should only be used in a development environment.
+This has to installed globally in the main root folder.
+Configure the  nodemon.json file to  ignore changes made in the public directory.
+Note:
+You can run the nodemon only in the parent folder and not sub-folders, just like app.js.
+
 
 
