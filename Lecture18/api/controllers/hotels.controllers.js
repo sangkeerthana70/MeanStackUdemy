@@ -31,9 +31,7 @@ module.exports.hotelsGetAll = function(req, res) {
         });
     
 };  
-    
-   
-   
+
 module.exports.hotelsGetOne = function(req, res) {
     var db = dbconn.get();
     var collection = db.collection('hotels');
@@ -63,7 +61,7 @@ module.exports.hotelsAddOne = function(req, res){
     if (req.body && req.body.name && req.body.stars) {
         newHotel = req.body;
         newHotel.stars = parseInt(req.body.stars, 10);
-        console.log(newHotel);//the body-parser middleware will parse out all the data from the posted form to the req.body.
+        //console.log(newHotel);//the body-parser middleware will parse out all the data from the posted form to the req.body.
         collection.insertOne(newHotel, function(err,response){
                 console.log(response);
                 console.log(response.ops);

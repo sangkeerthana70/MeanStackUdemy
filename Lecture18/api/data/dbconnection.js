@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var dburl = 'mongodb://anuradha78-homework1-5577789';
-
+console.log(process.env.ip);
 var _connection = null;
 
 var open = function(){
