@@ -1,11 +1,7 @@
-var dbconn = require('../data/dbconnection.js');
-var ObjectId = require('mongodb').ObjectId;
-var hotelData = require('../data/hotel-data.json');
+var mongoose = require('mongoose');
+var Hotel = mongoose.model('Hotel');//reference to the model that interacts with the database.
 
 module.exports.hotelsGetAll = function(req, res) {
-    
-    var db = dbconn.get();
-    var collection = db.collection('hotels');
     
     var offset = 0;
     var count = 5;
@@ -18,8 +14,17 @@ module.exports.hotelsGetAll = function(req, res) {
     if(req.query && req.query.count){
         count = parseInt(req.query.count, 10);
     }
-
-    collection
+    
+    console.log(Hotel.find());
+    Hotel
+        .find()
+        .exec(function(err, hotels) {
+            if (err) throw err;
+            console.log("Found hotels", hotels.length);
+            res
+                .json(hotels);
+        });
+   /* collection
         .find()
         .skip(offset)
         .limit(count)
@@ -28,7 +33,7 @@ module.exports.hotelsGetAll = function(req, res) {
         res
             .status(200)
             .json(docs);   
-        });
+        });*/
     
 };  
 

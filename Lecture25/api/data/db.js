@@ -28,7 +28,7 @@ process.on('SIGTERM', function() {
         process.exit(0);
     });
 });
-/*listen to the process once and let nodemon pick up the changes in restarting the server through mongoose*/
+/*listen to the process once and let nodemon pick up the changes in restarting the mongodb server through mongoose*/
 process.once('SIGUSR2', function() {
     mongoose.connection.close(function() {
         console.log("Mongoose disconnected through app termination (SIGUSR2)");
@@ -36,6 +36,8 @@ process.once('SIGUSR2', function() {
     });
 });
 
+//Bring in SCHEMAS and MODELS
+require('./hotels.models.js');
 
 
 
