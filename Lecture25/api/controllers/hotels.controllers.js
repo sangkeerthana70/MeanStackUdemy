@@ -155,33 +155,51 @@ module.exports.hotelsGetOne = function(req, res) {
         });
 
 };       
+/*since the services and photos keys have one string while creating a new hotel,
+delimited by a semicolon. While getting it from the req.body we need to convert the string into 
+an array by using the splitarray function.
+This is also used to avoid the req.body from creating an empty object while returning the values.*/
+var _splitArray = function(input) {
+  var output;
+  if (input && input.length > 0) {
+    output = input.split(";");
+  } else {
+    output = [];
+  }
+  return output;
+};
 
 module.exports.hotelsAddOne = function(req, res){
-    var db = dbconn.get();
-    var collection = db.collection('hotels');
-    var newHotel;
-  
-    console.log("POST new hotel");
+    Hotel
+        .create({
+          name : req.body.name,
+          description : req.body.description,
+          stars : parseInt(req.body.stars,10),//to change stars into a number
+          services : _splitArray(req.body.services),//to convert strings into arrays
+          photos : _splitArray(req.body.photos),
+          currency : req.body.currency,
+          location : {
+            address : req.body.address,
+            coordinates : [
+                parseFloat(req.body.lng),
+                parseFloat(req.body.lat)//to maintain decimal places
+                ]
+          }
     
-    if (req.body && req.body.name && req.body.stars) {
-        newHotel = req.body;
-        newHotel.stars = parseInt(req.body.stars, 10);
-        //console.log(newHotel);//the body-parser middleware will parse out all the data from the posted form to the req.body.
-        collection.insertOne(newHotel, function(err,response){
-                console.log(response);
-                console.log(response.ops);
+        }, function(err, hotel) {
+            if(err) {
+                console.log("Error creating Hotel");
                 res
-                    .status(201)
-                    .json(response.ops);
-            });
-        
-     }
-    else {
-        console.log("Data missing from the body");
-        res
-            .status(400)
-            .json({message: "Required data missing from body"});
-    }
+                    .status(400)//bad request
+                    .json(err);
+            }
+            else {
+                console.log("Hotel created", hotel);
+                res
+                    .status(201)//results created
+                    .json(hotel);
+            }
+        });
 };
     
             

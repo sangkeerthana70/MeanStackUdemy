@@ -9,7 +9,7 @@ var routes = require('./api/routes');//get the routes from the /api/routes folde
 app.set('port', process.env.PORT); //sets port property for entire app
 
 app.use(function(req, res, next) {
-    //console.log(req.method, req.url);
+    console.log(req.method, req.url);
     next();
 });
 
