@@ -26,8 +26,15 @@ module.exports.reviewsGetAll = function(req,res) {
                   "message" : "Hotel ID not found " + id
                 };
             } else {
-                response.message = doc.reviews ? doc.reviews : [];
+                //response.message = doc.reviews ? doc.reviews : [];
+                if (doc.reviews) {
+                  response.message = doc.reviews;
+                }
+                else {
+                    response.message = [];
+                }
             }
+                console.log(response.status);
               res
                 .status(response.status)
                 .json(response.message);
