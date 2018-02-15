@@ -1,0 +1,6 @@
+step-1 Find the specific document to update.(by using Module.exports.updateOne)
+step-2 update the model instance
+step-3 save the model instance and this will actually save it back to the mongoDb.
+This save method applies directly to the model instance and returns a callback which accepts two parameters, err and the second parameter is the updated document returned from the database.
+We do this by using doc.save() method where document is the model instance 
+step-4 finally send the response to the requester.

@@ -168,8 +168,9 @@ var _splitArray = function(input) {
   }
   return output;
 };
-
+//this function creates a new hotel through mongoose and submits the new data into the database. Mongoose's create a model function is used here.
 module.exports.hotelsAddOne = function(req, res){
+    console.log("POST new hotel");
     Hotel
         .create({
           name : req.body.name,
@@ -202,5 +203,65 @@ module.exports.hotelsAddOne = function(req, res){
         });
 };
     
-            
+    module.exports.hotelsUpdateOne = function(req, res) {
+        var id = req.params.hotelId;
+        console.log("Get hotelID", id);
+        
+        Hotel 
+            .findById(id)
+            .select("-reviews -rooms")//to exclude the documents that we are not updating.
+            .exec(function(err, doc) {  
+                var response = {
+                    status: 200,
+                    message: doc
+                };
+                if (err) {
+                    console.log("Error finding hotel");
+                    response.status = 500;
+                    response.message = err;
+                }
+                else if(!doc) {
+                    console.log("HotelId not found in database", id);
+                    response.status = 404;
+                    response.message = {
+                        "message": "Hotel ID not found" + id
+                    };
+                }
+                if (response.status != 200) {//if status has changed.
+                    res
+                        .status(response.status)
+                        .json(response.message);
+                }
+                else {
+                    doc.name = req.body.name;
+                    doc.description = req.body.description;
+                    doc.stars = parseInt(req.body.stars,10);//to change stars into a number
+                    doc.services =  _splitArray(req.body.services);//to convert strings into arrays
+                    doc.photos =  _splitArray(req.body.photos);
+                    doc.currency = req.body.currency;
+                    doc.location = {
+                        address : req.body.address,
+                        coordinates : [
+                            parseFloat(req.body.lng),
+                            parseFloat(req.body.lat)//to maintain decimal places
+                        ]
+                  };
+                  doc.save(function(err, hotelUpdated) {
+                      if (err) {
+                          res 
+                            .status(500)
+                            .json(err);
+                      }
+                      else {
+                          res
+                            .status(204)
+                            .json();//sending back an empty response eventhough the save is successful because the user just updates and this is the standard code- 204 means no content.
+                      }
+                  });
+                }
+            });
+    };
+        
+    
+    
             
