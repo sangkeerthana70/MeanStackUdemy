@@ -1,0 +1,96 @@
+Angular.js
+Lexture-36
+1-ng-app is the appdirective that defines the scope of the angular.js inside the html and has to be placed in th top inside html tag.
+
+2-ng-model is a Binding directives which binds the (model)user input box with the browser and updates
+reflects the ouput as and when the model is updated.
+
+3-ng-init is used to initialize a variable and can be any data types. But this not recommended.
+
+4-ng-if and ng-show have similar functionalities.To show and hide if a checkbox is clicked.
+The only difference between ng-if and ng-show is that ng-if removes the element(p tag where it is defined) from the DOM tree. Wheras ng-show will apply a CSS property to hide elements and not remove it from the DOM tree.
+This is important because if you add some styling to paragraph and use ng-show it will still preserve the styling and not totally remove it. Wheras while doing this with ng-if it will remove all the styling and will revert to the original CSS styling specified.EG:a style set to red will lose its property once ng-if is revoked.
+
+5 ng-init, ng-show and ng-hide.
+ng-hide will work as long as the condition is true else it will show when the condition is false.Eg:Guess !number.
+
+6 ng-class helps in setting a css property for a input box for each condition.
+
+7 ng-repeat to iterate through items in an array or object.
+this can be combined with other directives like ng-class to set CSS properties.
+ng-options is another directive related to ng-repeat.
+ng-options is used to bind data to a select element. It is used in building dynamic forms.
+
+So to populate a html select element in a html it is always better to use a ng-options directive.
+8 ng-cloak
+---------------------------------------------------------
+Lecture-37
+Filters provide a way to format data that we are about to display.
+Working with static data using ng-init to assign a value to a variable. Using filters to add more features like currency, time stamp, and rounding decimals to a certain number of places. Using filters to filter out data based on a key like the star wars example.
+Lecture-38
+Controllers are javascript functions which take $scope as a parameter. Inside this controller we can attach properties to this $scope object.
+$scope object acts as a glue between controllers and the view. Properties attached in $scope can be accessed in the view.
+controllerAS syntax.
+
+Creating angular modules.
+First create myApp module and attach it to ng-app="myApp"
+Secong create a module and attach a controller to it by defining a variable which is a javascript function called MyController to it.
+ angular.module("myApp", []).controller('MyController', MyController);
+ MyController is a function which accepts the $scope parameter where we define the properties through the $scope object.
+ 
+Third we create a div and specify ng-controller directive to tell the app to use the controller here.
+<div ng-controller = "MyController"
+Now we can assess the name property of the $scope here.The name Hello Tamas is displayed in the HTML view which is the view. Hence we see how $scope acts as a glue between controller and the view.
+We can also attach a function itself(this function can also accept parameters) to the $scope other than the datatypes itself.
+
+Fourth-How to use ControllerAS syntax in place of $scope to reference the controller functions inside the view.
+var vm(view model) = this;here vm is the Controller as syntax.
+
+Lecture-39 AngularJs-Modules
+ng-app="myApp".
+In the previous Lecture we had the javascript function inside the html itself, now we move all the functions to app.js file and refer our function inside the script tag
+Create two separate files called app.js and controller.js and attach the modules in each of them.
+
+Lecture-40
+In angular.js single page applications user can navigate through the application without the page being refreshed.Eventhough the URL are changing the app does not refresh.
+The single page application will be displayed through routes which serve the HTML.
+Each route maps to a url path where we also specify a controller and a template for the URL. 
+When the URL changes in the browser, Angular will change the controller and the view template that it is using and display back to the user.
+Single page applications work with templates and we need to tell angular where to insert these templates using ng-view. This ng-view tells angular where to insert the template.
+In addition to templates we can also assign controllers to the routes.
+For doing this we need to include the Angular route library in the script tag in the HTML.
+
+App.js
+ngRoute is the dependency we define inside the angular module "myApp"
+$route provider is where we define routes. $route provider is also a built in service that we are using.
+inside these routes we instruct the template Url and the controllers it should use to serve the html page.
+
+Lecture-41
+$http service is another service that allows us to go out and reach various webservices endpoint and get data from there. Created a new folder Lecture41 with separate main and film folders with controllers and html separated. Had the old data in Lectur-41old folder.
+
+Lecture-42
+Custom services, Service Vs Factory.
+Service that specifies a method to go to different endpoints in each controller and updates it. So we can reuse this application. For this sake we are going to create a service inside a factory folder.
+
+Difference between a service and a factory.
+While using a  service we are using the instance of a function. We are using the new function keyword.
+Factories- when we use factory name as an injectable argument, it will provide us the value that is  returned by invoking the function reference passed to the module factory function.
+Service in Datafactory.js file.
+At the end of this lecture we created our own service in datafactory.js file which has all the http requests. The purpose of this is so that if there is an update to any of the endpoints of the http requests we can just change the FilmFactory function at the top and it will automatically update all the controllers.
+
+Lecture-43
+Custom Filters. we used dateSuffix filter by using built in dateSuffix of angular js and reverse filter that reverse an input string.
+Lecture-44
+Building single page app.
+In this Lecture we involve angular into the application. For this we tell the back-end server app.js through 
+EXPRESS where the node_modules folder is and allow the browser to serve the angular related files. That is how the title of the application mean hotel is shown in the angular view. 
+Lecture-45
+In this we go to the back-end API to /api endpoints to get some data into
+this application.
+
+
+
+
+
+
+ 
