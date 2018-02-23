@@ -84,9 +84,28 @@ Lecture-44
 Building single page app.
 In this Lecture we involve angular into the application. For this we tell the back-end server app.js through 
 EXPRESS where the node_modules folder is and allow the browser to serve the angular related files. That is how the title of the application mean hotel is shown in the angular view. 
+
+Note: Created a new folder for Section-4 Angular part since the disk storage in Cloud-9 was full.
+So I git cloned the old Lecture folders upto Lecture-41 into the mean stack workspace separately.
+Also have the whole workspace copied into my c-drive.
+After git push of Section-4 into Section-4 branch,
+I tried not to merge Section-4 with master so that the old files in master will not be overwritten.
+Take note of that.
 Lecture-45
 In this we go to the back-end API to /api endpoints to get some data into
 this application.
+Created two new folders hotel-list(how to list hotels inside the app) and hotel-display(with function to display a single hotel) to separate 
+each folders.
+Under hotel-list we serve an html for the /api/hotels?count=10 endpoint with the functionality
+under hotel-list-controller.js that has the HotelsController function in it.
+Lecture-46
+With the previous Lecture we displayed 10 hotels, in this we will
+write function to display data about one selected hotel by the user.
+
+
+
+
+
 
 
 
