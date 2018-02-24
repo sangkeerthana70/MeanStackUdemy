@@ -2,13 +2,14 @@
 angular.module('meanhotel').factory('hotelDataFactory', hotelDataFactory);
 
 function hotelDataFactory($http) {
+    //console.log("Inside hotelDataFactory");
     return {
         hotelList: hotelList,
         hotelDisplay: hotelDisplay
     };
     
     function hotelList() {
-      return $http.get('/api/hotels').then(complete).catch(failed);  
+      return $http.get('/api/hotels?count=10').then(complete).catch(failed);  
     }
     
     function hotelDisplay(id) {

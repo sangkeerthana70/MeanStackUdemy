@@ -7,6 +7,6 @@ function HotelController($routeParams, hotelDataFactory) {
     
     hotelDataFactory.hotelDisplay(id).then(function(response) {
         console.log(response);
-        vm.hotel = response.data;
+        vm.hotel = response;
     });
 }

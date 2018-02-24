@@ -102,6 +102,17 @@ Lecture-46
 With the previous Lecture we displayed 10 hotels, in this we will
 write function to display data about one selected hotel by the user.
 
+Created hotel-display folder with hotel.html and hotel-display-controller.js with serparate functionalities.
+Created a data-factory-folder for creating the service which  has all the http requests. The purpose of this is so that if there is an update to any of the endpoints of the http requests we can just change the dataFactory function at the top and it will automatically update all the controllers.(because all the http requests are defined here and any change here will reflect in the controllers too.
+
+After this we will inject this dataFactory.js file in each of the controllers.(hotel-list-controller.js and hotel-display-controller.js).
+Note that we have removed the http get request from the individual controller since the dataFactory.js is now handling the invidual route requests inside it. We also linked the hotelList  and hotelDisplay function from within the hotel-data-factory.js file.
+
+The advantage is that we have all the http get statements under the hotel-data-factory.js.
+ANy change made here will reflect in the controllers requiring no more changes to be made.
+
+We have the display of all hotels and also when hotel is clicked it fetches data about one single hotel.
+Finally we separated the api calls into the factory file, removed the $http dependency inside the controller and added factory as a dependency inside the controllers. 
 
 
 
