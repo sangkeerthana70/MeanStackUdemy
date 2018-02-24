@@ -3,9 +3,10 @@ var express = require('express');//require express
 var app = express();//initialize express.
 var path = require('path');
 var bodyParser = require('body-parser');
-app.set('port', process.env.PORT); //sets port property for entire app
 
-var routes = require('./api/routes');//get the routes from the /api/routes folder under Lecture12
+var routes = require('./api/routes');//get the routes from the /api/routes/index.js folder under Lecture12
+
+app.set('port', process.env.PORT); //sets port property for entire app
 
 //add middleware to console log every request.
 app.use(function(req, res, next) {
@@ -19,6 +20,7 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 //enable parsing of posted forms
 app.use(bodyParser.urlencoded({extended : false}));//urlencoded is the method used for sending html posted forms.
+app.use(bodyParser.json());//tell the backend api to understand the native json data, since angular does not use url encoding while sending form data(Lecture 48) 
 //add routes
 app.use('/api', routes);
 

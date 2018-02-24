@@ -114,7 +114,9 @@ ANy change made here will reflect in the controllers requiring no more changes t
 We have the display of all hotels and also when hotel is clicked it fetches data about one single hotel.
 Finally we separated the api calls into the factory file, removed the $http dependency inside the controller and added factory as a dependency inside the controllers. 
 
-
+Lecture-47
+Adding a new custom directive to display rating as stars instead of a number called hotel-rating-directive.js under hotel-rating folder and linked the attributes to the hotel.html file.
+Note that we added stars as an attribute to the hotel-rating directive in hotel.html file.
 
 
 
