@@ -12,7 +12,7 @@
     <li ng-repeat="review in vm.hotel.reviews"> <strong>{{ review.name }} says:</strong> {{ review.review }}</li>
 </ul>
 
-<form name="vm.reviewForm" ng-submit="vm.addReview()">
+<form class="reviewForm" name="vm.reviewForm" ng-submit="vm.addReview()">
     Your name: <input type="text" name="name" required ng-minlength="2" ng-model="vm.name">
     <div ng-show="vm.reviewForm.name.$dirty && vm.reviewForm.name.$invalid && vm.isSubmitted">
         <p>Name should be more than 2 characters long</p>

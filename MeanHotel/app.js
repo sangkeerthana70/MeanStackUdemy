@@ -3,7 +3,6 @@ var express = require('express');//require express
 var app = express();//initialize express.
 var path = require('path');
 var bodyParser = require('body-parser');
-
 var routes = require('./api/routes');//get the routes from the /api/routes/index.js folder under Lecture12
 
 app.set('port', process.env.PORT); //sets port property for entire app

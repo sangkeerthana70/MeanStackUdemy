@@ -18,11 +18,12 @@ function hotelDataFactory($http) {
     }
     
     function postReview(id, review) {//this function goes to the route in /routes/index.js .post(ctrlReviews.reviewsAddOne) method where we can post a review.
-        return $http.post('/api/hotels/' + id + '/reviews' + review).then(complete).catch(failed);
+//        console.log("review = " + review.review);
+        return $http.post('/api/hotels/' + id + '/reviews',review).then(complete).catch(failed);
     }
-    
+
     function complete(response) {
-        return response.data;
+        return response;
     }
     
     function failed(error) {

@@ -6,8 +6,8 @@ function HotelsController(hotelDataFactory) {
     var vm = this;
     vm.title = 'MEAN Hotel App';
     hotelDataFactory.hotelList().then(function(response) {
-        console.log(response);
-        vm.hotels = response;
+        console.log(response.data);
+        vm.hotels = response.data;
         //add the hotel property to the view model.
     });
 }
