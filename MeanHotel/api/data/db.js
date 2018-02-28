@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var dburl = 'mongodb://anuradha78-homework1-5577789/meanhotel';
-
+var retry = null;
 mongoose.connect(dburl);
 
+//connection events
 mongoose.connection.on('connected', function() {
     console.log("Mongoose connected to " + dburl);
 });
@@ -15,6 +16,7 @@ mongoose.connection.on('error', function(err) {
     console.log("Mongoose connection error: " + err);
 });
 
+//for app termination
 process.on('SIGINT', function() {
     mongoose.connection.close(function() {
         console.log("Mongoose disconnected through app termination (SIGINT)");
@@ -22,6 +24,7 @@ process.on('SIGINT', function() {
     });
 });
 
+//for app termination
 process.on('SIGTERM', function() {
     mongoose.connection.close(function() {
         console.log("Mongoose disconnected through app termination (SIGTERM)");
@@ -37,8 +40,8 @@ process.once('SIGUSR2', function() {
 });
 
 //Bring in SCHEMAS and MODELS
-require('./hotels.models.js');
-
+require('./hotels.models');
+require('./users.model');
 
 
 

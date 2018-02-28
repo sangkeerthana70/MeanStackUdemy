@@ -118,9 +118,38 @@ Lecture-47
 Adding a new custom directive to display rating as stars instead of a number called hotel-rating-directive.js under hotel-rating folder and linked the attributes to the hotel.html file.
 Note that we added stars as an attribute to the hotel-rating directive in hotel.html file.
 
+Lecture-49
+Storing the user information in the database to create tokens which will inturn
+validate the user password and username that sits in the users
+'s end.
+1-For storing the information at the server(backend) we will create a 
+file  called users.model.js under api/data folder. Then we have to link this model
+in the api/data/db.js file by requiring it.
+2-Next we are going to define a controller called users.controller.js.
+under api/controllers.js.
+3-after defining two functions for register and login we will define the
+routes under api/routes/index.js.
+4-IN the users.controllers.js we have defined two functions.
+The register function will actually create a User if they enter a username, name and password.
+and console log the success or error accordingly.
 
+The login function will find one user based on his already created username and password.
+Note that in the users.model.js schema
+username: {
+        type: String,
+        unique: true,
+        required: true
+    },
 
-
+the unique field is set to true, so if the server identifies the unique user, it will 
+find that user and display back their username and password.
+5- Encrypting the  password that is in plain text.
+6- Finally we have to check if the password that got encrpted in the database is the same as the user entered password.
+For this we use the package called bcrypt.
+For testing purposes we went to postman to post the username, password. 
+When we changed the password it displayed the message 'Unauthorized'.
+P.S If you run into any errors with finding package.json run command npm install.
+to check if your package.json file is in the current folder.
 
 
 
