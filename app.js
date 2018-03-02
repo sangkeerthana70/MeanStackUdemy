@@ -2,7 +2,7 @@ require('./api/data/db.js');//connects with the database through mongoose requir
 var express = require('express');//require express
 var app = express();//initialize express.
 var path = require('path');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');//declare the body-parser before the routes.
 
 var routes = require('./api/routes');//get the routes from the /api/routes folder under Lecture12
 

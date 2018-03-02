@@ -7,7 +7,7 @@ var ctrlUsers = require('../controllers/users.controllers.js');
 // Hotel routes
 router
   .route('/hotels')
-  .get(ctrlHotels.hotelsGetAll)
+  .get(ctrlUsers.authenticate, ctrlHotels.hotelsGetAll)//added the users.controllers/authenticate function here(Lecture50).
   .post(ctrlHotels.hotelsAddOne);
 
 router

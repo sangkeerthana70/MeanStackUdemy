@@ -151,7 +151,24 @@ When we changed the password it displayed the message 'Unauthorized'.
 P.S If you run into any errors with finding package.json run command npm install.
 to check if your package.json file is in the current folder.
 
+Lecture-50
+Adding JWT(json web token) to the backend and use it in the application.
+Download JWT package.
+Next in the users.login function when we find the already registered user we use a method on the 
+var token called JWT.sign to sign the token by assigning three parameters, the first one being the payload. Inside this payload we assign
+a property the username that is coming from the database. We will later on access this username 
+and use it in the application.
+The second parameter to the jwt.sign method is the secret variable that is declared inline here. 
+The third parameter  is the expiresIn parameter that will expire the session in an hour.
+
+Once the jwt.sign method is created and run in postman for the
+POST https://homework1-anuradha78.c9users.io/api/users/login route it will create a web token and we ask it send an object with success boolean value and the actual token itself.
+{"success":true,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFudSIsImlhdCI6MTUxOTkyNTY4NywiZXhwIjoxNTE5OTI5Mjg3fQ.sHg3fAhDxpAm1TVeb8BhOsAJ6sBYruy2XT7g4KlT8kI"}
+This web token is created since the already registered users, username and password is correct.
+We can see that the header, payload and signature is created in the web-token and separated by commas.
+
+Note:This is the token that we have to use to in some requests against some secured endpoints.
+For this we create another function for authentication in the users.controllers.js.
 
 
 
- 
