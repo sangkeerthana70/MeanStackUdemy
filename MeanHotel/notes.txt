@@ -170,5 +170,28 @@ We can see that the header, payload and signature is created in the web-token an
 Note:This is the token that we have to use to in some requests against some secured endpoints.
 For this we create another function for authentication in the users.controllers.js.
 
+Lecture51
+How to register a user using AngularJs on the backend by defining register and login routes in index.js.
+Also linking a users-contoller.js function to the routes by defining register, login and authenticate function.
+
+Lecture52
+Handling authentication from the front end using Angularjs.
+First we need to define a page in the browser to handle the registration.
+For this we define a route in app.js called '/register'
+.when('/register', {
+            templateUrl: 'angular-app/register/register.html',
+            controller: RegisterController,
+            controllerAS: 'vm'
+        });    
+when someone goes to this page we want the browser to load a templateUrl and a controller
+that does certain things.
+Once the register.html is served for the register endpoint the form is displayed for the user to
+enter their Username, password and repeat password. The ng-submit="vm.register()" function is linked to the register-controller.js
+which has RegisterController functions defined in it.
+Inside this register-controller.js we are going to collect the user input information provided
+in the form(front end) and send it back to the server during the http post request when  the register endpoint is invoked.
+
+
+
 
 

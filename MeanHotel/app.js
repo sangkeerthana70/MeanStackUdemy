@@ -20,6 +20,7 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 //enable parsing of posted forms
 app.use(bodyParser.urlencoded({extended : false}));//urlencoded is the method used for sending html posted forms.
 app.use(bodyParser.json());//tell the backend api to understand the native json data, since angular does not use url encoding while sending form data(Lecture 48) 
+
 //add routes
 app.use('/api', routes);
 
