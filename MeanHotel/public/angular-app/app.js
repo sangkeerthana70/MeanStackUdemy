@@ -17,7 +17,7 @@ function config($routeProvider) {//a built in angular service where we define ro
         .when('/register', {
             templateUrl: 'angular-app/register/register.html',
             controller: RegisterController,
-            controllerAS: 'vm'
+            controllerAs: 'vm'
         });    
     }
 

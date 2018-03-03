@@ -5,6 +5,7 @@ function RegisterController($http) {
     var vm = this;
     
     vm.register = function() {
+        console.log("In RegisterController");
         var user = {//create an object to get the user information from the forms
             username: vm.username,
             password: vm.password
@@ -19,6 +20,7 @@ function RegisterController($http) {
                 vm.error = 'Please make sure the passwords match.';
             }
             else {
+                console.log("Making ajax call");
                 $http.post('/api/users/register', user).then(function(result) {//passing the object created above(in line8)
                     console.log(result);
                     vm.message = 'Successful registration, please login.';

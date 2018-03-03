@@ -55,7 +55,10 @@ module.exports.login = function(req, res) {
 };
 
 module.exports.authenticate = function(req, res, next) {
+    console.log("In users.controller");
     var headerExists = req.headers.authorization;//make sure the request object has an authorization header property.
+    //console.log(req.headers.authorization);
+    
     if (headerExists) {
         var token = req.headers.authorization.split(' ')[1];//get the authorization header from the request and split it.
         jwt.verify(token, 's3cr3t', function(error, decoded) {
@@ -70,6 +73,7 @@ module.exports.authenticate = function(req, res, next) {
         });
     }
     else {
+        console.log("No Token Provided");
         res.status(403).json('No token provided');
     }
 };

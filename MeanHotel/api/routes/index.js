@@ -8,6 +8,7 @@ var ctrlUsers = require('../controllers/users.controllers.js');
 router
   .route('/hotels')
   .get(ctrlUsers.authenticate, ctrlHotels.hotelsGetAll)//added the users.controllers/authenticate function here(Lecture50).
+  //.get(ctrlUsers.authenticate)
   .post(ctrlHotels.hotelsAddOne);
 
 router
