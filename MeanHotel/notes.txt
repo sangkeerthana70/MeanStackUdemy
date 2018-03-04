@@ -193,5 +193,50 @@ in the form(front end) and send it back to the server during the http post reque
 
 Lecture-52
 Adding a login form to our application.
+1)Added a main route in public/angular-app/app.js for 
+        .when('/', {
+            templateUrl: 'angular-app/main/welcome.html'
+        })
+2)also added a 
+        .otherwise({
+            redirectTo: '/'
+        }); if any other route is given redirect to the main page.
+3) Added a div in angular/index.html for the <div ng-view></div>.
+4) Added padding for container in custom/css.
+    .container {
+    padding: 60px 0 0 0;
+    }
+5) Added a nav bar. First we created a folder called navigation-directive under public/angular-app.
+The navigation-directive.html has a nav bar for home, hotels and register.
+It also has a login form which shows up when some user is not logged in.
+Also when someone is logged in it has a welcome back with the username button and logout button displayed.
+
+6)Otherwise we ask for a username and password and the whole form is controlled by the ng-controller="LoginController as vm"
+Now we create a javascript for the navigation-directive.js to take over the control.
+.directive('mhNavigation')directive inside the above js file  is then linked to the index.html as a tag
+<mh-navigation></mh-navigation> which creates the nav bar in the main page.
+
+7)Since the nav-bar is not functional we have to create a function for the LoginController that is inside the 
+<nav ng-controller="LoginController as vm"
+For this we create a folder called login in public/angular-app/ and a file login-controller.js under it.
+the controller LoginController and function is defined here and also linked to the index.html file.
+Now when we run the app, the nav bar and the actual form to login username and password button is displayed.
+
+After this login form is displayed we need to take care of few things.
+a)Once a user is logged in we need to display additional menu items as well.
+EX:instead of showing a register button we have to show the users profile after he has logged in and also hide the login form and display 
+a logout button.
+Once they have logged in a jwt token is created at the back end and we make use of that token 
+to get the user information from now onwards.
+Every request made by the user should use this JWT token if and when needed.
+An intercepter will intercept every http request that we make and if the request has an endpoint that requires 
+us to send a token we can automatically attach the token using the intercepter to that request. 
+
+For this we create a new folder in public/angular-app/auth/auth-intercepter.js.
+The AuthIntercepter function here will handle the request, response and response errors(that will handle rejections).
+AuthIntercepter is linked to auth-factory file and these two js files are then linked in the index.html files.
+
+8)Now in angular-app/login/login-controller.js we will reuse auth-factory.js file. 
+
 
 
