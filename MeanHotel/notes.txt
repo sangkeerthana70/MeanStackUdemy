@@ -237,6 +237,37 @@ The AuthIntercepter function here will handle the request, response and response
 AuthIntercepter is linked to auth-factory file and these two js files are then linked in the index.html files.
 
 8)Now in angular-app/login/login-controller.js we will reuse auth-factory.js file. 
+Note that the auth-factory.js is connected to the login-controller.js file and has a vm.isLoggedIn = function() which 
+logs in the user by creating an user object and sending  the user object's username and password to the backend.
 
+This is done by loging the user by calling $http post method and also handle the response and errors.
+Finally by running the app we get an object that is created in the console by logging in the user and sending the data to the 
+backend for which we get a response back.
+
+
+data:
+success:true
+token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbmdlZXRoYSIsImlhdCI6MTUyMDE5OTEyNCwiZXhwIjoxNTIwMjAyNzI0fQ.39KX1BM1KiwICCD4x3waFQABfB-Sjs-gcdAScX7FOAU"
+__proto__:Object
+
+9)Next we use this webtoken to store this in the $sessionStorage of the browser on the user side.
+This webtoken will be available as long as the user is logged in, once they log out the logOut function is 
+invoked and the webtoken is deleted from the session storage.
+10)In the browser when a user goes to the home page and is already registered we dont want other tabs
+like register to be displayed again, so to get clever about this in the angular-app/app.js
+we will add another property called access to the routes. The profile route will alone be restricted where the 
+user cannot see his profile unless he has logged in.
+11)Also we will add the $httpProvider.interceptor which is our custom interceptor (AuthInterceptor) to intecept the http requests.
+12)A run block is added to the config at the top when the meanhotel module is injected into the application.
+This run block kick starts the application and helps us to make sure the restricted path is not accessed.
+13)Added a route for the profile in app.js that will be displayed only when the user is logged in and once he is logged out
+the profile page is restricted since the webtoken is deleted from sessionStorage once he is
+logged out.
+14) npm install angular-jwt that lets us to view the web token itself and extract information about that token. 
+15)Add the dependency of jwthelper inside the login-controller.js.
+16)Include the jwt dependency from node_modules into the index.html file.
+17)Include it in the application from the login-controller.js.
+By doing this we decode the token when the user loggs in and then display the user.
+18)Add the package angular-jwt package as a dependency in angular-app/app.js.
 
 

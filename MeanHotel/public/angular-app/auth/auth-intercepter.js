@@ -1,7 +1,7 @@
 /* global angular*/
-angular.module('meanhotel').factory('AuthIntercepter', AuthIntercepter);
+angular.module('meanhotel').factory('AuthInterceptor', AuthInterceptor);
 
-function AuthIntercepter($location, $q, $window, AuthFactory) {
+function AuthInterceptor($location, $q, $window, AuthFactory) {
     return {
         request: request,
         response: response,
@@ -9,7 +9,7 @@ function AuthIntercepter($location, $q, $window, AuthFactory) {
     };
     
     function request(config) {
-        config.headers = config.headers || {};//use config.headers exists use that or use an empty object.
+        config.headers = config.headers || {};//if config.headers exists use that or use an empty object.
         if ($window.sessionStorage.token) {
             config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
         }
