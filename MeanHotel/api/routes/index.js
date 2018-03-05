@@ -21,7 +21,7 @@ router
 router
   .route('/hotels/:hotelId/reviews')
   .get(ctrlReviews.reviewsGetAll)
-  .post(ctrlReviews.reviewsAddOne);
+  .post(ctrlUsers.authenticate, ctrlReviews.reviewsAddOne);//added the users.controllers/authenticate function here(Lecture53).
 
 router
   .route('/hotels/:hotelId/reviews/:reviewId')

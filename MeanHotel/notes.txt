@@ -270,4 +270,45 @@ logged out.
 By doing this we decode the token when the user loggs in and then display the user.
 18)Add the package angular-jwt package as a dependency in angular-app/app.js.
 
+LECTURE-53
+In this Lecture, we will work on adding a hotel review only if the user is registered and logged in.
+For accomplishing this we go to the hotelDisplay controller in hotel-display folder.
+vm.isLoggedIn = function() {
+        if (AuthFactory.isLoggedIn) {
+          //  console.log("yes. logged in");
+            return true;
+        }
+        else {
+        //    console.log("no. not logged in");
+            return false;
+            }
+        }
+        
+We added this logged in function to the hotel-display-controller.js file.
+Also in the hotel.html file we added the vm.isLoggedIn() function to the review form, which will be
+displayed only when a user is logged in.
+
+Also to make sure that no one can post a review using postman after logging out as a way of hacking.
+For this we need to make sure that a user is authenticated to post a new review.
+In index.js in the review routes post method, we add the ctrlUsers.authenticate first.
+before the ctrlReviews.reviewsAddOne is accessed.
+If a user is not authenticated they cannot post a review and it will throw an error.
+
+ALso we have to make sure that the users name is matching the your name field while adding a review after
+they are logged in. For this we are using the jwtHelper method in the hotel-display-controller.js.
+
+But since the username will be the same as the user name we are removing the your name field from the hotel.html file.
+
+Inside hotel-display-controller.js file.
+
+vm.addReview = function() {
+        
+        var token = jwtHelper.decodeToken($window.sessionStorage.token);
+        var username = token.username;
+        
+        var postData = {
+            name: username,
+        }
+we are getting the username from the token.
+This will automatically display the username when a user adds a review.
 
